@@ -2,17 +2,21 @@
 {% load static %}
 {% block content %}
 {% comment %} <a href="{% url 'feeds:create' %}">게시물 작성</a> {% endcomment %}
-<div class="row" style="margin-left : 50px; margin-top : 50px;">
+<div class="row" style="margin-left : 00px; margin-top : 20px;">
 <div class="col-8">
 {% for feed in feeds %}
 <br>
 <div class="card" style="width: 38rem; ">
 <p class="p-0 m-3" style = "font-weight: 600; ">
-<img src="{% static '프로필.jpg' %}" alt="" style="width:30px; height:30px; border-radius: 70%; margin-right : 10px;" href="#">
 
+{% if user.profile_image %}
+<img src="{{ user.profile_image.url }}" alt="" style="width:30px; height:30px; border-radius: 70%; margin-right : 10px;" href="#">
+{% else %}
+<img src="{% static '프로필.jpg' %}" alt="" style="width:30px; height:30px; border-radius: 70%; margin-right : 10px;" href="#">
+{% endif %}
   {{user}}
   <a>
-  <button type="button" class="btn btn-white p-0" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width:30px; height:30px;">
+  <button type="button" class="btn btn-white p-0" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width:30px; height:30px; margin-left:480px;">
   <img src="{% static '....png' %}" alt="">
 </button>
 </a>
@@ -40,7 +44,7 @@
   {% comment %} <li class="list-inline">{{ feed.like }}</li> {% endcomment %}
   <img class = "card-title" src="{% static 'feed_chat.png' %}" alt="" style="width:30px; height:30px;">
   <img class = "card-title" src="{% static 'feed_dm.png' %}" alt="" style="width:30px; height:30px;">
-  <img class = "card-title" src="{% static 'feed_fix.png' %}" alt="" style="width:30px; height:30px; margin-left: 437px">
+  <img class = "card-title" src="{% static 'feed_fix.png' %}" alt="" style="width:30px; height:30px; margin-left: 435px">
     <p class="card-text" style="font-size: 15px; font-weight:600;">{{user}} <span style ="font-weight:400;">{{ feed.content }}</span></p>
     <p class="card-text" style="color: #c7c7c7; font-size: 10px;">{{feed.created_at|date:'n월 j일'}}</p>
   </div>
@@ -49,11 +53,15 @@
 {% empty %}
 {% endfor %}
 
-<div class="col-4" style = "position : fixed; top: 100px;left: 1000px; width:350px;">
+<div class="col-4" style = "position : fixed; top: 100px;left: 1100px; width:350px;">
 <p style = "font-weight: 600;">
+{% if user.profile_image %}
+<img src="{{ user.profile_image.url }}" alt="" style="width:56px; height:56px; border-radius: 70%; margin-right : 10px;" href="#">
+{% else %}
 <img src="{% static '프로필.jpg' %}" alt="" style="width:56px; height:56px; border-radius: 70%; margin-right : 10px;" href="#">
+{% endif %}
   {{user}}
-  <a href="" class="text-decoration-none" style="font-size: 12px;">전환</a>
+  <a href="" class="text-decoration-none" style="font-size: 12px; margin-left:180px">전환</a>
 </p>
 <img src="{% static 'reco.png' %}" alt="..." style="margin-bottom : 20px;" >
 <br>

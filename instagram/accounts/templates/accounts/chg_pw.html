@@ -36,7 +36,11 @@
 </div>
 <div class="col-7 text-center">
 <div style = "margin-top : 30px;">
+{% if user.profile_image %}
+<img src="{{ user.profile_image.url }}" alt="" style="width:30px; height:30px; border-radius: 70%; margin-right : 10px;" href="#">
+{% else %}
 <img src="{% static '프로필.jpg' %}" alt="" style="width:30px; height:30px; border-radius: 70%; margin-right : 10px;" href="#">
+{% endif %}
 <p style = "font-weight: 600; ">
 {{user}}
 </p>

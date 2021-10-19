@@ -17,14 +17,15 @@
 </div>
 <form action="{% url 'accounts:signup' %}" method="POST" class="mx-5">
 {% csrf_token %}
-<label class="form-label" for="id_email"></label>
+{{ form.as_p }}
+{% comment %} <label class="form-label" for="id_email"></label>
 <input type="text" name="email" maxlength="150" autocapitalize="none" autocomplete="email" autofocus="" class="form-control" placeholder="이메일 주소" required="" id="id_email">
 <label class="form-label" for="id_first_name"></label>
 <input type="text" name="first_name" maxlength="150" autocapitalize="none" autocomplete="first_name" autofocus="" class="form-control" placeholder="이름" required="" id="id_first_name">
 <label class="form-label" for="id_username"></label>
 <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" class="form-control" placeholder="사용자 이름" required="" id="id_username">
-<label class="form-label" for="id_password"></label>
-<input type="password" name="password" autocomplete="new-password" class="form-control" placeholder="비밀번호" required="" id="id_password">
+<label class="form-label" for="id_password1"></label>
+<input type="password1" name="password1" autocomplete="new-password1" class="form-control" placeholder="비밀번호" required="" id="id_password1"> {% endcomment %}
 {% comment %} <label class="form-label" for="id_password1"></label>
 <input type="password" name="password1" autocomplete="new-password" class="form-control" placeholder="비밀번호" required="" id="id_password1">
 <label class="form-label" for="id_password2">비밀번호 확인
