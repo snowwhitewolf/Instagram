@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% comment %} <a href="{% url 'feeds:create' %}">게시물 작성</a> {% endcomment %}
+<div class="row" style="margin-left : 50px; margin-top : 50px;">
+<div class="col-8">
+{% for feed in feeds %}
+<br>
+<div class="card" style="width: 38rem; ">
+<p class="p-0 m-3" style = "font-weight: 600; ">
+<img src="{% static '프로필.jpg' %}" alt="" style="width:30px; height:30px; border-radius: 70%; margin-right : 10px;" href="#">
+
+  {{user}}
+  <a>
+  <button type="button" class="btn btn-white p-0" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width:30px; height:30px;">
+  <img src="{% static '....png' %}" alt="">
+</button>
+</a>
+</p>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <form action="{% url 'feeds:delete' feed.pk %}"method="POST">
+{% csrf_token %}
+<button class="btn btn-white text-danger">삭제</button>
+</form>
+<hr>
+<button href="{% url 'feeds:detail' feed.pk %}" class="btn btn-white"><a href="{% url 'feeds:detail' feed.pk %}" class="text-decoration-none text-dark">게시물로 이동</a></button>
+<hr>
+<button type="button" class="btn btn-white " data-bs-dismiss="modal">취소</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <img src="{{ feed.image.url }}" class="card-img-top" alt="..." >
+  <div class="card-body">
+  <img class = "card-title" src="{% static 'feed_like.png' %}" alt="" style="width:30px; height:30px;">
+  {% comment %} <li class="list-inline">{{ feed.like }}</li> {% endcomment %}
+  <img class = "card-title" src="{% static 'feed_chat.png' %}" alt="" style="width:30px; height:30px;">
+  <img class = "card-title" src="{% static 'feed_dm.png' %}" alt="" style="width:30px; height:30px;">
+  <img class = "card-title" src="{% static 'feed_fix.png' %}" alt="" style="width:30px; height:30px; margin-left: 437px">
+    <p class="card-text" style="font-size: 15px; font-weight:600;">{{user}} <span style ="font-weight:400;">{{ feed.content }}</span></p>
+    <p class="card-text" style="color: #c7c7c7; font-size: 10px;">{{feed.created_at|date:'n월 j일'}}</p>
+  </div>
+</div>
+
+{% empty %}
+{% endfor %}
+
+<div class="col-4" style = "position : fixed; top: 100px;left: 1000px; width:350px;">
+<p style = "font-weight: 600;">
+<img src="{% static '프로필.jpg' %}" alt="" style="width:56px; height:56px; border-radius: 70%; margin-right : 10px;" href="#">
+  {{user}}
+  <a href="" class="text-decoration-none" style="font-size: 12px;">전환</a>
+</p>
+<img src="{% static 'reco.png' %}" alt="..." style="margin-bottom : 20px;" >
+<br>
+<div>
+<a href="" class="text-decoration-none" style="color: #c7c7c7; font-size: 11px;">소개</a>
+<span style="color: #c7c7c7; font-size: 11px;">·</span>
+<a href="" class="text-decoration-none"style="color: #c7c7c7; font-size: 11px;">도움말</a>
+<span style="color: #c7c7c7; font-size: 11px;">·</span>
+<a href="" class="text-decoration-none "style="color: #c7c7c7;font-size: 11px;">홍보 센터</a>
+<span style="color: #c7c7c7; font-size: 11px;">·</span>
+<a href="" class="text-decoration-none "style="color: #c7c7c7;font-size: 11px;">API</a>
+<span style="color: #c7c7c7; font-size: 11px;">·</span>
+<a href="" class="text-decoration-none"style="color: #c7c7c7;font-size: 11px;">채용 정보</a>
+<span style="color: #c7c7c7; font-size: 11px;">·</span>
+<br>
+<a href="" class="text-decoration-none"style="color: #c7c7c7;font-size: 11px;">개인정보처리방침</a>
+<span style="color: #c7c7c7; font-size: 11px;">·</span>
+<a href="" class="text-decoration-none"style="color: #c7c7c7;font-size: 11px;">약관</a>
+<span style="color: #c7c7c7; font-size: 11px;">·</span>
+<a href="" class="text-decoration-none "style="color: #c7c7c7;font-size: 11px;">위치</a>
+<span style="color: #c7c7c7; font-size: 11px;">·</span>
+<a href="" class="text-decoration-none"style="color: #c7c7c7;font-size: 11px;">인기 계정</a>
+<span style="color: #c7c7c7; font-size: 11px;">·</span>
+<a href="" class="text-decoration-none"style="color: #c7c7c7;font-size: 11px;">해시태그</a>
+<span style="color: #c7c7c7; font-size: 11px;">·</span>
+<a href="" class="text-decoration-none"style="color: #c7c7c7;font-size: 11px;">언어</a>
+<br>
+<div style="padding-top : 20px;">
+<p style="color: #c7c7c7;font-size: 11px;">© 2021 Instagram from Facebook</p>
+</div>
+</div>
+</div>
+{% endblock content %}

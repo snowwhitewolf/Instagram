@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block content %}
+<div class="container mt-5">
+<div class="row justify-content-center">
+<div class="col-4 ">
+<div class="border mx-5 text-center bg-white">
+<img src="{% static 'login_logo.png' %}" alt="" class="my-3 ">
+<p class="my-0 fw-bold text-secondary">친구들의 사진과 동영상을 보려면</p>
+<p class="my-0 fw-bold text-secondary">가입하세요.</p>
+<a href="#" class = "text-decoration-none">
+<img src="{% static 'facebook_signup.png' %}" alt="" class="my-2">
+</a>
+<div>
+<img src="{% static 'or.png' %}" alt="" class=" max-auto">
+</div>
+<form action="{% url 'accounts:signup' %}" method="POST" class="mx-5">
+{% csrf_token %}
+<label class="form-label" for="id_email"></label>
+<input type="text" name="email" maxlength="150" autocapitalize="none" autocomplete="email" autofocus="" class="form-control" placeholder="이메일 주소" required="" id="id_email">
+<label class="form-label" for="id_first_name"></label>
+<input type="text" name="first_name" maxlength="150" autocapitalize="none" autocomplete="first_name" autofocus="" class="form-control" placeholder="이름" required="" id="id_first_name">
+<label class="form-label" for="id_username"></label>
+<input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" class="form-control" placeholder="사용자 이름" required="" id="id_username">
+<label class="form-label" for="id_password"></label>
+<input type="password" name="password" autocomplete="new-password" class="form-control" placeholder="비밀번호" required="" id="id_password">
+{% comment %} <label class="form-label" for="id_password1"></label>
+<input type="password" name="password1" autocomplete="new-password" class="form-control" placeholder="비밀번호" required="" id="id_password1">
+<label class="form-label" for="id_password2">비밀번호 확인
+<input type="password" name="password2" autocomplete="new-password" class="form-control" placeholder="비밀번호 확인" required="" id="id_password2"></label> {% endcomment %}
+<div class="d-grid my-3">
+  <button class="btn btn-primary mb-5" type="submit">가입</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<div class="container my-2">
+<div class="row justify-content-center">
+<div class="col-4 ">
+<div class="border mx-5 text-center bg-white">
+<p>계정이 있으신가요?
+<a href="{% url 'accounts:login' %}" class = "text-decoration-none fw-bold">
+로그인
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center">
+<p>앱을 다운로드하세요.</p>
+<a href="#" class = "text-decoration-none">
+<img src="{% static 'apple.png' %}" alt="" class="my-3" style="width:134px; height:40px" href="#">
+</a>
+<a href="#" class = "text-decoration-none">
+<img src="{% static 'google.png' %}" alt="" class="my-3" style="width:134px; height:40px">
+</a>
+</div>
+{% endblock content %}

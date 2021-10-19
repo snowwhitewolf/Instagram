@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+<div class="row" style = "margin-top : 100px;">
+<div class="col">
+<div class="card" style="width: 30rem; background-color:#fafafa; margin-left : 100px;">
+<img src="{{ feed.image.url }}" class="card-img-top" alt="..." >
+</div>
+</div>
+<div class="col  border bg-white">
+<img src="{% static '프로필.jpg' %}" alt="" style="width:30px; height:30px; border-radius: 70%;" href="#">
+  {{user}}
+  <button type="button" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <img src="{% static '....png' %}" alt="">
+</button>
+</p>
+<hr>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <form action="{% url 'feeds:delete' feed.pk %}"method="POST">
+{% csrf_token %}
+<button class="btn btn-white text-danger">삭제</button>
+</form>
+<hr>
+<button type="button" class="btn btn-white " data-bs-dismiss="modal">취소</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <div>
+  <h5>{{user}} {{feed.context}}</h5>
+  </div>
+  <div>
+  <img  src="{% static 'nav_like.png' %}" alt="" style="width:30px; height:30px;">
+  <img  src="{% static 'feed_chat.png' %}" alt="" style="width:30px; height:30px;">
+  <img  src="{% static 'nav_dm.png' %}" alt="" style="width:30px; height:30px;">
+  <img  src="{% static 'feed_fix.png' %}" alt="" style="width:30px; height:30px;">
+    <p class="card-text text-secondary">{{feed.created_at|date:'n월 j일'}}</p>
+  </div>
+</div>
+</div>
+</div>
+{% endblock content %}

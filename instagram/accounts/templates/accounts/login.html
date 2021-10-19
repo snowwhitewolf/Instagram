@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block content %}
+<div class="container ">
+<div class="row justify-content-center my-5">
+<div class="col-4">
+<img src="{% static 'login1.png' %}" alt= "login1.png">
+</div>
+<div class="col-4 my-2" style="width : 350px;">
+<div class="border text-center bg-white py-4">
+<img src="{% static 'login_logo.png' %}" alt="" class="ym-3">
+<form action="{% url 'accounts:login' %}" method="POST" class="mx-5">
+{% csrf_token %}
+{% bootstrap_form form %}
+<div class="d-grid">
+  <button class="btn btn-primary" type="submit">로그인</button>
+</div>
+</form>
+<div>
+<img src="{% static 'or.png' %}" alt="" class="my-3 max-auto">
+</div>
+<div>
+<a href="#" class = "text-decoration-none">
+<img src="{% static 'facebook.png' %}" alt="" class="my-3">
+</a>
+</div>
+<a href="#" class = "text-decoration-none text-dark">비밀번호를 잊으셨나요?</a>
+</div>
+<div class="border text-center bg-white my-2 py-2">
+<p class="my-2">계정이 없으신가요?
+<a href="{% url 'accounts:signup' %}" class = "text-decoration-none fw-bold">
+가입하기
+</div>
+</a>
+</p>
+<div class="text-center">
+<p>앱을 다운로드하세요.</p>
+<a href="#" class = "text-decoration-none">
+<img src="{% static 'apple.png' %}" alt="" class="my-3" style="width:134px; height:40px" href="#">
+</a>
+<a href="#" class = "text-decoration-none">
+<img src="{% static 'google.png' %}" alt="" class="my-3" style="width:134px; height:40px">
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center">
+<a href="" class="text-decoration-none" style="color: #8e8e8e; font-size: 12px;">소개</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e; font-size: 12px;">블로그</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">채용 정보</a>
+<a href="" class="text-decoration-none "style="color: #8e8e8e;font-size: 12px;">도움말</a>
+<a href="" class="text-decoration-none "style="color: #8e8e8e;font-size: 12px;">API</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">개인정보처리방침</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">약관</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">인기 계정</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">해시태그</a>
+<a href="" class="text-decoration-none "style="color: #8e8e8e;font-size: 12px;">위치</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">Instagram Lite</a>
+<br>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">뷰티</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">댄스</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">피트니스</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">식음료</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">집 및 정원</a>
+<a href="" class="text-decoration-none"style="color:#8e8e8e;font-size: 12px;">음악</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">시각 예술</a>
+<br>
+<div style="padding-top : 20px;">
+<p style="color: #8e8e8e;font-size: 11px;">© 2021 Instagram from Facebook</p>
+</div>
+</div>
+{% endblock content %}

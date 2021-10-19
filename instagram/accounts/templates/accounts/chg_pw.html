@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div style = "margin-top : 70px; margin-left : 160px; margin-right : 160px;" class="bg-white border row">
+<div class="col-3 border-end">
+<div class="p-3 ">
+<a href="{% url 'accounts:edit' %}" class="text-decoration-none  text-dark" >프로필 편집</a>
+</div>
+<div class="p-3 border-start border-2 border-dark">
+<a href="{% url 'accounts:password' %}" class="text-decoration-none  text-dark" style = "font-weight: 600; ">비밀번호 변경</a>
+</div>
+<div class = "p-3">
+<a href="" class="text-decoration-none  text-dark" >앱 및 웹사이트</a>
+</div>
+<div class = "p-3">
+<a href="" class="text-decoration-none  text-dark">이메일 및 SMS</a>
+</div >
+<div class = "p-3">
+<a href="" class="text-decoration-none  text-dark">푸시 알림</a>
+</div>
+<div class = "p-3">
+<a href="" class="text-decoration-none  text-dark">연락처 관리</a>
+</div>
+<div class = "p-3">
+<a href="" class="text-decoration-none  text-dark">개인정보 및 보안</a>
+</div>
+<div class = "p-3">
+<a href="" class="text-decoration-none  text-dark">로그인 활동</a>
+</div>
+<div class = "p-3">
+<a href="" class="text-decoration-none  text-dark">Instargram에서 보낸 이메일</a>
+</div>
+<div class = "p-3">
+<a href="" class="text-decoration-none ">프로페셔널 계정으로 전환</a>
+</div>
+</div>
+<div class="col-7 text-center">
+<div style = "margin-top : 30px;">
+<img src="{% static '프로필.jpg' %}" alt="" style="width:30px; height:30px; border-radius: 70%; margin-right : 10px;" href="#">
+<p style = "font-weight: 600; ">
+{{user}}
+</p>
+<form action="{% url 'accounts:password' %}" method="POST">
+{% csrf_token %}
+<label for="id_old_password">이전 비밀번호</label>
+<input type="password" name="old_password" autocomplete="current-password" autofocus="" required="" id="id_old_password">
+<br>
+<br>
+<label for="id_new_password1">새 비밀번호</label>
+<input type="password" name="new_password1" autocomplete="new-password" required="" id="id_new_password1">
+<br>
+<br>
+<label for="id_new_password2">새 비밀번호 확인</label>
+<input type="password" name="new_password2" autocomplete="new-password" required="" id="id_new_password2">
+<br>
+<br>
+<button type="submit" class="btn btn-primary">비밀번호 변경</button>
+</form>
+<br>
+<a href="#" class="text-primary text-decoration-none">비밀번호를 잊으셨나요?</a>
+</div>
+</div>
+</div>
+
+<div class="text-center py-3">
+<a href="" class="text-decoration-none" style="color: #8e8e8e; font-size: 12px;">소개</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e; font-size: 12px;">블로그</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">채용 정보</a>
+<a href="" class="text-decoration-none "style="color: #8e8e8e;font-size: 12px;">도움말</a>
+<a href="" class="text-decoration-none "style="color: #8e8e8e;font-size: 12px;">API</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">개인정보처리방침</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">약관</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">인기 계정</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">해시태그</a>
+<a href="" class="text-decoration-none "style="color: #8e8e8e;font-size: 12px;">위치</a>
+<a href="" class="text-decoration-none"style="color: #8e8e8e;font-size: 12px;">Instagram Lite</a>
+<br>
+<div style="padding-top : 20px;">
+<p style="color: #8e8e8e;font-size: 11px;">© 2021 Instagram from Facebook</p>
+</div>
+</div>
+
+{% endblock content %}
